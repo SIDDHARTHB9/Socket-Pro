@@ -1,0 +1,12 @@
+<data>
+<interval>3</interval>
+<records>
+    <record><speed>80</speed><time>10:00:00</time></record>
+    <record><speed>85</speed><time>10:00:03</time></record>
+    <record><speed>95</speed><time>10:00:06</time></record>
+    <record><speed>100</speed><time>10:00:09</time></record>
+    <record><speed>110</speed><time>10:00:12</time></record>
+    <record><speed>125</speed><time>10:00:15</time></record>
+    <record><speed>130</speed><time>10:00:18</time></record>
+</records>
+</data>
