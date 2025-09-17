@@ -1,0 +1,80 @@
+The document presents VAD, an end-to-end vectorized paradigm for autonomous driving that enhances planning efficiency and safety by utilizing a fully vectorized scene representation instead of traditional rasterized methods.
+Vectorized Scene Representation for Autonomous Driving
+VAD introduces a novel vectorized paradigm for autonomous driving that enhances planning efficiency and safety by utilizing a fully vectorized scene representation instead of traditional rasterized methods. ​
+
+VAD (Vectorized Autonomous Driving) is an end-to-end framework for autonomous driving. ​
+It replaces computationally intensive rasterized representations with a fully vectorized scene representation. ​
+The vectorized approach improves planning safety by incorporating instance-level structure information. ​
+VAD achieves state-of-the-art performance on the nuScenes dataset, outperforming previous methods significantly. ​
+The base model, VAD-Base, reduces average collision rates by 29.0% and runs 2.5 times faster than the previous best method. ​
+A lightweight variant, VAD-Tiny, improves inference speed by up to 9.3 times while maintaining comparable performance. ​
+
+Advantages of Vectorized Representation
+The vectorized representation offers significant computational and safety advantages over traditional methods. ​
+
+Vectorized maps provide essential road structure information, aiding trajectory planning. ​
+The motion of traffic participants is represented as agent motion vectors, enhancing collision avoidance. ​
+The vectorized representation is computationally efficient, crucial for real-world applications. ​
+VAD utilizes map queries and agent queries to learn features from sensor data, improving planning guidance. ​
+
+Planning Mechanism and Constraints
+VAD employs a unique planning mechanism that integrates vectorized scene information with specific planning constraints. ​
+
+The planning process involves ego-agent and ego-map interactions to gather scene information. ​
+Three key planning constraints are introduced: ego-agent collision, ego-boundary overstepping, and ego-lane direction. ​
+These constraints ensure safe and efficient trajectory planning by regulating the ego vehicle's motion. ​
+The planning head outputs trajectories based on learned features and high-level driving commands. ​
+
+Experimental Results and Performance Metrics
+VAD demonstrates superior performance in both open-loop and closed-loop planning scenarios compared to existing methods. ​
+
+In open-loop evaluations, VAD-Base achieves an average planning displacement error of 0.72m and a collision rate of 0.22%. ​
+VAD-Tiny shows an average planning displacement error of 0.78m with a collision rate of 0.38%. ​
+VAD outperforms previous state-of-the-art methods in both planning accuracy and inference speed. ​
+In closed-loop simulations, VAD-Base achieves a driving score of 75.20 on the Town05 benchmark, indicating high performance in real-world scenarios.
+
+Implementation and Training Details
+VAD is designed with specific implementation details that enhance its training and operational efficiency.
+
+The model uses a ResNet50 backbone for feature extraction and operates within a 60m × 30m perception range. ​
+VAD is trained using a combination of vectorized scene learning loss, planning constraint loss, and imitation learning loss. ​
+The training process involves 60 epochs on multiple GPUs, optimizing various parameters for effective performance.
+The model's architecture includes multiple query types to facilitate effective scene perception and planning.
+
+Performance Comparison of VAD
+VAD demonstrates significant improvements in driving scene representation and planning performance compared to existing methods.
+
+VAD improves the Driving Score (DS) by 9.15 on the Town05 Short benchmark compared to STP3. ​
+On the Town05 Long benchmark, VAD achieves a DS of 30.31, nearing the performance of LiDAR-based methods. ​
+VAD enhances the Recall Rate (RC) from 56.36 to 75.20, while STP3 has a better RC but a much lower DS. ​
+
+Effectiveness of Design Choices in VAD
+The design choices in VAD significantly impact its planning accuracy and safety.
+
+Ego-map interaction is crucial for reducing planning distance errors. ​
+The absence of ego-agent and ego-map interactions leads to a higher collision rate. ​
+Implementing vectorized planning constraints reduces collision rates, with the best results achieved when all three constraints are used together.
+
+Impact of Rasterized Map Representation
+Using rasterized map representation in VAD leads to poorer performance in collision avoidance. ​
+
+A variant of VAD using rasterized map representation shows a much higher collision rate compared to the vectorized approach. ​
+
+Runtime Analysis of VAD Modules
+The runtime distribution among different modules of VAD indicates efficient processing.
+
+The Backbone and BEV Encoder consume the majority of the runtime for feature extraction and transformation. ​
+The motion and map modules account for 34.6% of the total runtime for multi-agent motion prediction. ​
+The planning module operates efficiently at only 3.4ms due to its sparse vectorized representation. ​
+
+Qualitative Results of VAD
+VAD effectively predicts agent motions and plans ego vehicle movements based on vectorized scene representation. ​
+
+Qualitative results show accurate multi-modality agent motion predictions and reasonable planning trajectories. ​
+Planning trajectories are projected onto raw camera images for better scene understanding. ​
+
+Conclusion and Future Directions for VAD
+VAD represents a significant advancement in autonomous driving through vectorized scene representation and planning.
+
+VAD achieves high performance and efficiency, essential for safe autonomous driving systems. ​
+Future work should explore the integration of multi-modality motion predictions and additional traffic information into the planning process. ​
